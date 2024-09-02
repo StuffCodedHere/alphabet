@@ -1,0 +1,252 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  user-select: none;
+}
+:root {
+  --primary-background: black;
+  --first-color: green;
+  --second-color: lime;
+  --third-color: purple;
+  --font-size-big: 3rem;
+  --font-size-small: 1.5rem;
+}
+html {
+  font-size: 62.5%;
+}
+.wall {
+  width: 100vw;
+  height: var(--full-height);
+  position: absolutew;
+  display: none;
+  z-index: 1;
+}
+.level-container {
+  height: var(--full-height);
+  background: var(--primary-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.title {
+  color: var(--first-color);
+  font-size: var(--font-size-big);
+}
+.levels {
+  width: 95vw;
+  height: var(--less-height);
+  border: 2px solid green;
+  padding: 10px;
+  border-radius: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.level-one,
+.level-two,
+.level-three {
+  width: 15%;
+  height: 10%;
+  background: var(--third-color);
+  font-size: var(--font-size-big);
+  border-radius: 20%;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.level-one::before,
+.level-two::before {
+  content: "";
+  width: 10%;
+  height: 60%;
+  position: absolute;
+  top: 20%;
+  left: 0%;
+  box-shadow: -5px 0 var(--energy) var(--boost) orange;
+}
+.level-three {
+  left: 42%;
+  bottom: -100px;
+}
+.level-two,
+.level-three {
+  background: transparent;
+  color: var(--second-color);
+  border: 1px solid var(--third-color);
+}
+.level-three::before {
+  content: "";
+  width: 60%;
+  height: 10%;
+  position: absolute;
+  bottom: 0%;
+  box-shadow: 0 5px var(--energy) var(--boost) orange;
+}
+.game {
+  color: var(--second-color);
+  box-shadow: 0 0 5px 1px var(--first-color);
+  border-radius: 3%;
+  position: relative;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.status {
+  width: 100%;
+  height: 10%;
+  border-bottom: 1px solid var(--first-color);
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+.health-container {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.live1,
+.live2,
+.live3 {
+  width: 5vw;
+  height: 5vw;
+  background: var(--first-color);
+  transform: rotate(45deg);
+  position: relative;
+}
+.live1::before,
+.live2::before,
+.live3::before {
+  content: "";
+  width: 50%;
+  height: 50%;
+  background: black;
+  outline: 2px solid black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+.question {
+  width: 100%;
+  height: 30%;
+  font-size: var(--font-size-big);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.keyboard-container {
+  width: 95%;
+  height: 25%;
+  border-top: 1px solid var(--third-color);
+  border-bottom: 1px solid var(--third-color);
+  border-radius: 5%;
+  position: absolute;
+  bottom: 2%;
+  padding: 20px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+.keys {
+  width: 10%;
+  height: 25%;
+  border: 1px solid var(--second-color);
+  border-radius: 15%;
+  font-size: var(--font-size-small);
+  margin: 2px 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.whenClick {
+  animation: animate 0.2s linear;
+}
+.gone {
+  background: var(--third-color);
+  transition: all 5s;
+}
+.shake {
+  animation: shake 1s;
+}
+.getReady {
+  animation: getReady 1s;
+}
+@keyframes animate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(20%);
+  }
+  30% {
+    transform: translateX(-20%);
+  }
+  40% {
+    transform: translateX(20%);
+  }
+  50% {
+    transform: translateX(-20%);
+  }
+  60% {
+    transform: translateX(20%);
+  }
+  70% {
+    transform: translateX(-20%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes getReady {
+  0% {
+    top: 0;
+  }
+  10% {
+    top: -2px;
+  }
+  20% {
+    top: 2px;
+  }
+  30% {
+    top: -2px;
+  }
+  40% {
+    top: 2px;
+  }
+  50% {
+    top: -2px;
+  }
+  60% {
+    top: 2px;
+  }
+  80% {
+    top: -2px;
+  }
+  90% {
+    top: 2px;
+  }
+  100% {
+    top: 0;
+  }
+}
